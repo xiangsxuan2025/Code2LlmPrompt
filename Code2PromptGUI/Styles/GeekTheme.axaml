@@ -1,0 +1,164 @@
+<Styles xmlns="https://github.com/avaloniaui"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<Style Selector="Window">
+		<Setter Property="Background" Value="#0f0f23"/>
+		<Setter Property="Foreground" Value="#00ff41"/>
+		<Setter Property="FontFamily" Value="Consolas, Menlo, Monaco, Courier New"/>
+	</Style>
+
+	<Style Selector="Border.header">
+		<Setter Property="Background" Value="#1a1a2e"/>
+		<Setter Property="BorderThickness" Value="0,0,0,2"/>
+		<Setter Property="BorderBrush" Value="#00ff41"/>
+		<Setter Property="Padding" Value="20,15"/>
+	</Style>
+
+	<Style Selector="TextBlock.title">
+		<Setter Property="Foreground" Value="#00ff41"/>
+		<Setter Property="FontSize" Value="16"/>
+		<Setter Property="FontWeight" Value="Bold"/>
+	</Style>
+
+	<Style Selector="TextBlock.status">
+		<Setter Property="Foreground" Value="#ff6b35"/>
+		<Setter Property="FontSize" Value="12"/>
+	</Style>
+
+	<Style Selector="Border.section">
+		<Setter Property="Background" Value="#1a1a2e"/>
+		<Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="BorderBrush" Value="#333344"/>
+		<Setter Property="CornerRadius" Value="8"/>
+		<Setter Property="Padding" Value="15"/>
+	</Style>
+
+	<Style Selector="TextBlock.section-title">
+		<Setter Property="Foreground" Value="#00ff41"/>
+		<Setter Property="FontSize" Value="14"/>
+		<Setter Property="FontWeight" Value="Bold"/>
+		<Setter Property="Margin" Value="0,0,0,5"/>
+	</Style>
+
+	<Style Selector="TextBlock.label">
+		<Setter Property="Foreground" Value="#cccccc"/>
+		<Setter Property="FontSize" Value="12"/>
+		<Setter Property="FontWeight" Value="SemiBold"/>
+	</Style>
+
+	<Style Selector="TextBox.input">
+		<Setter Property="Background" Value="#0a0a1a"/>
+		<Setter Property="Foreground" Value="#ffffff"/>
+		<Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="BorderBrush" Value="#444455"/>
+		<Setter Property="CornerRadius" Value="4"/>
+		<Setter Property="Padding" Value="8,6"/>
+		<Setter Property="CaretBrush" Value="#00ff41"/>
+	</Style>
+
+	<Style Selector="TextBox.input:focus">
+		<Setter Property="BorderBrush" Value="#00ff41"/>
+	</Style>
+
+	<Style Selector="ComboBox.combo">
+		<Setter Property="Background" Value="#0a0a1a"/>
+		<Setter Property="Foreground" Value="#ffffff"/>
+		<Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="BorderBrush" Value="#444455"/>
+		<Setter Property="CornerRadius" Value="4"/>
+		<Setter Property="Padding" Value="8,6"/>
+	</Style>
+
+	<Style Selector="ComboBox.combo /template/ ToggleButton">
+		<Setter Property="Background" Value="#333344"/>
+		<Setter Property="Foreground" Value="#00ff41"/>
+	</Style>
+
+	<Style Selector="CheckBox.checkbox">
+		<Setter Property="Foreground" Value="#cccccc"/>
+		<Setter Property="FontSize" Value="12"/>
+	</Style>
+
+	<Style Selector="CheckBox.checkbox:pointerover /template/ ContentPresenter">
+		<Setter Property="TextBlock.Foreground" Value="#00ff41"/>
+	</Style>
+
+	<Style Selector="Button.primary-btn">
+		<Setter Property="Background" Value="#00ff41"/>
+		<Setter Property="Foreground" Value="#0f0f23"/>
+		<Setter Property="BorderThickness" Value="0"/>
+		<Setter Property="CornerRadius" Value="6"/>
+		<Setter Property="Padding" Value="20,10"/>
+		<Setter Property="FontWeight" Value="Bold"/>
+		<Setter Property="Cursor" Value="Hand"/>
+	</Style>
+
+	<Style Selector="Button.primary-btn:pointerover">
+		<Setter Property="Background" Value="#00cc33"/>
+	</Style>
+
+	<Style Selector="Button.primary-btn:pressed">
+		<Setter Property="Background" Value="#009927"/>
+	</Style>
+
+	<Style Selector="Button.secondary-btn">
+		<Setter Property="Background" Value="#333344"/>
+		<Setter Property="Foreground" Value="#ffffff"/>
+		<Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="BorderBrush" Value="#555566"/>
+		<Setter Property="CornerRadius" Value="6"/>
+		<Setter Property="Padding" Value="15,8"/>
+		<Setter Property="Cursor" Value="Hand"/>
+	</Style>
+
+	<Style Selector="Button.secondary-btn:pointerover">
+		<Setter Property="Background" Value="#444455"/>
+		<Setter Property="BorderBrush" Value="#00ff41"/>
+	</Style>
+
+	<Style Selector="Button.icon-btn">
+		<Setter Property="Background" Value="#333344"/>
+		<Setter Property="Foreground" Value="#00ff41"/>
+		<Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="BorderBrush" Value="#555566"/>
+		<Setter Property="CornerRadius" Value="4"/>
+		<Setter Property="Padding" Value="8"/>
+		<Setter Property="Width" Value="35"/>
+		<Setter Property="Cursor" Value="Hand"/>
+	</Style>
+
+	<Style Selector="Border.output-border">
+		<Setter Property="Background" Value="#0a0a1a"/>
+		<Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="BorderBrush" Value="#444455"/>
+		<Setter Property="CornerRadius" Value="8"/>
+		<Setter Property="Padding" Value="1"/>
+	</Style>
+
+	<Style Selector="TextBox.output-text">
+		<Setter Property="Background" Value="#0a0a1a"/>
+		<Setter Property="Foreground" Value="#00ff41"/>
+		<Setter Property="BorderThickness" Value="0"/>
+		<Setter Property="Padding" Value="15"/>
+		<Setter Property="FontSize" Value="12"/>
+	</Style>
+
+	<Style Selector="ProgressBar.progress-bar">
+		<Setter Property="Background" Value="#333344"/>
+		<Setter Property="Foreground" Value="#00ff41"/>
+		<Setter Property="BorderThickness" Value="0"/>
+		<Setter Property="Height" Value="4"/>
+	</Style>
+
+	<Style Selector="TextBlock.processing-text">
+		<Setter Property="Foreground" Value="#ff6b35"/>
+		<Setter Property="FontSize" Value="11"/>
+	</Style>
+
+	<Style Selector="TextBlock.token-info">
+		<Setter Property="Foreground" Value="#ff6b35"/>
+		<Setter Property="FontSize" Value="11"/>
+		<Setter Property="FontWeight" Value="Bold"/>
+	</Style>
+
+</Styles>

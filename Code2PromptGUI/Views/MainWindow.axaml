@@ -1,20 +1,218 @@
 <Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:Code2PromptGUI.ViewModels"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="Code2PromptGUI.Views.MainWindow"
-        x:DataType="vm:MainWindowViewModel"
-        Icon="/Assets/avalonia-logo.ico"
-        Title="Code2PromptGUI">
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:vm="clr-namespace:Code2PromptGUI.ViewModels"
+		x:Class="Code2PromptGUI.Views.MainWindow"
+		x:DataType="vm:MainViewModel"
+		Title="Code2Prompt GUI"
+		Width="1200" Height="800"
+		MinWidth="1000" MinHeight="600"
+		WindowStartupLocation="CenterScreen">
 
-    <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:MainWindowViewModel/>
-    </Design.DataContext>
+	<Window.Styles>
+		<!-- 默认的Fluent主题 -->
+		<StyleInclude Source="avares://Avalonia.Themes.Fluent/FluentTheme.xaml"/>
+		<StyleInclude Source="avares://Code2PromptGUI/Styles/GeekTheme.axaml"/>
+	</Window.Styles>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+	<DockPanel>
+		<!-- Header -->
+		<Border DockPanel.Dock="Top" Classes="header">
+			<StackPanel Orientation="Horizontal" Spacing="15">
+				<TextBlock Text="🚀" FontSize="24" VerticalAlignment="Center"/>
+				<TextBlock Text="Code2Prompt GUI" FontSize="18" FontWeight="Bold"
+						   VerticalAlignment="Center" Classes="title"/>
+				<TextBlock Text="{Binding Status}" VerticalAlignment="Center"
+						   Classes="status" Margin="20,0,0,0"/>
+			</StackPanel>
+		</Border>
 
+		<!-- Main Content -->
+		<Grid Margin="20" ColumnDefinitions="300,*" RowDefinitions="*,Auto">
+
+			<!-- Left Panel - Configuration -->
+			<ScrollViewer Grid.Column="0" Grid.Row="0" Margin="0,0,20,0">
+				<StackPanel Spacing="15">
+
+					<!-- Basic Settings -->
+					<Border Classes="section">
+						<StackPanel Spacing="10">
+							<TextBlock Text="📁 Basic Settings" Classes="section-title"/>
+
+							<StackPanel Spacing="8">
+								<TextBlock Text="Path to Analyze" Classes="label"/>
+								<Grid ColumnDefinitions="*,Auto">
+									<TextBox Text="{Binding Path}" Watermark=". (current directory)"
+											 Classes="input"/>
+									<Button Content="📁" Grid.Column="1" Margin="5,0,0,0"
+											Command="{Binding BrowsePathCommand}" Classes="icon-btn"/>
+								</Grid>
+							</StackPanel>
+
+							<StackPanel Spacing="8">
+								<TextBlock Text="Output File" Classes="label"/>
+								<Grid ColumnDefinitions="*,Auto">
+									<TextBox Text="{Binding OutputFile}" Watermark="- (stdout)"
+											 Classes="input"/>
+									<Button Content="💾" Grid.Column="1" Margin="5,0,0,0"
+											Command="{Binding BrowseOutputCommand}" Classes="icon-btn"/>
+								</Grid>
+							</StackPanel>
+
+							<CheckBox Content="Copy to Clipboard" IsChecked="{Binding Clipboard}"
+									  Classes="checkbox"/>
+						</StackPanel>
+					</Border>
+
+					<!-- File Selection -->
+					<Border Classes="section">
+						<StackPanel Spacing="10">
+							<TextBlock Text="🔍 File Selection" Classes="section-title"/>
+
+							<StackPanel Spacing="8">
+								<TextBlock Text="Include Patterns" Classes="label"/>
+								<TextBox Text="{Binding IncludePatterns}" Watermark="*.rs,*.toml"
+										 AcceptsReturn="True" Classes="input"/>
+							</StackPanel>
+
+							<StackPanel Spacing="8">
+								<TextBlock Text="Exclude Patterns" Classes="label"/>
+								<TextBox Text="{Binding ExcludePatterns}" Watermark="target/**,*.log"
+										 AcceptsReturn="True" Classes="input"/>
+							</StackPanel>
+
+							<StackPanel Spacing="5">
+								<CheckBox Content="Follow Symlinks" IsChecked="{Binding FollowSymlinks}"
+										  Classes="checkbox"/>
+								<CheckBox Content="Include Hidden Files" IsChecked="{Binding Hidden}"
+										  Classes="checkbox"/>
+								<CheckBox Content="Skip .gitignore" IsChecked="{Binding NoIgnore}"
+										  Classes="checkbox"/>
+							</StackPanel>
+						</StackPanel>
+					</Border>
+
+					<!-- Output Format -->
+					<Border Classes="section">
+						<StackPanel Spacing="10">
+							<TextBlock Text="📄 Output Format" Classes="section-title"/>
+
+							<StackPanel Spacing="8">
+								<TextBlock Text="Format" Classes="label"/>
+								<ComboBox ItemsSource="{Binding OutputFormats}" SelectedItem="{Binding OutputFormat}"
+										  Classes="combo"/>
+							</StackPanel>
+
+							<StackPanel Spacing="8">
+								<TextBlock Text="Template" Classes="label"/>
+								<Grid ColumnDefinitions="*,Auto">
+									<TextBox Text="{Binding Template}" Watermark="Custom template path"
+											 Classes="input"/>
+									<Button Content="📄" Grid.Column="1" Margin="5,0,0,0"
+											Command="{Binding BrowseTemplateCommand}" Classes="icon-btn"/>
+								</Grid>
+							</StackPanel>
+
+							<StackPanel Spacing="5">
+								<CheckBox Content="Line Numbers" IsChecked="{Binding LineNumbers}"
+										  Classes="checkbox"/>
+								<CheckBox Content="Absolute Paths" IsChecked="{Binding AbsolutePaths}"
+										  Classes="checkbox"/>
+								<CheckBox Content="No Code Blocks" IsChecked="{Binding NoCodeblock}"
+										  Classes="checkbox"/>
+								<CheckBox Content="Full Directory Tree" IsChecked="{Binding FullDirectoryTree}"
+										  Classes="checkbox"/>
+							</StackPanel>
+						</StackPanel>
+					</Border>
+
+					<!-- Git Integration -->
+					<Border Classes="section">
+						<StackPanel Spacing="10">
+							<TextBlock Text="🔀 Git Integration" Classes="section-title"/>
+
+							<CheckBox Content="Include Git Diff" IsChecked="{Binding Diff}"
+									  Classes="checkbox"/>
+
+							<StackPanel Spacing="8" IsVisible="{Binding Diff}">
+								<TextBlock Text="Diff Branches" Classes="label"/>
+								<TextBox Text="{Binding GitDiffBranches}" Watermark="main,develop"
+										 Classes="input"/>
+							</StackPanel>
+
+							<StackPanel Spacing="8">
+								<TextBlock Text="Log Branches" Classes="label"/>
+								<TextBox Text="{Binding GitLogBranches}" Watermark="main,develop"
+										 Classes="input"/>
+							</StackPanel>
+						</StackPanel>
+					</Border>
+
+					<!-- Token Settings -->
+					<Border Classes="section">
+						<StackPanel Spacing="10">
+							<TextBlock Text="🔢 Token Settings" Classes="section-title"/>
+
+							<StackPanel Spacing="8">
+								<TextBlock Text="Encoding" Classes="label"/>
+								<ComboBox ItemsSource="{Binding Encodings}" SelectedItem="{Binding Encoding}"
+										  Classes="combo"/>
+							</StackPanel>
+
+							<StackPanel Spacing="8">
+								<TextBlock Text="Token Format" Classes="label"/>
+								<ComboBox ItemsSource="{Binding TokenFormats}" SelectedItem="{Binding TokenFormat}"
+										  Classes="combo"/>
+							</StackPanel>
+
+							<StackPanel Spacing="5">
+								<CheckBox Content="Show Token Map" IsChecked="{Binding TokenMap}"
+										  Classes="checkbox"/>
+								<CheckBox Content="Quiet Mode" IsChecked="{Binding Quiet}"
+										  Classes="checkbox"/>
+							</StackPanel>
+						</StackPanel>
+					</Border>
+
+				</StackPanel>
+			</ScrollViewer>
+
+			<!-- Right Panel - Output -->
+			<Grid Grid.Column="1" Grid.Row="0" RowDefinitions="Auto,*">
+
+				<!-- Output Controls -->
+				<StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="10" Margin="0,0,0,15">
+					<Button Content="🚀 Generate Prompt" Command="{Binding GenerateCommand}"
+							Classes="primary-btn" Width="150"/>
+					<Button Content="📋 Copy Output" Command="{Binding CopyOutputCommand}"
+							Classes="secondary-btn" IsEnabled="{Binding HasOutput}"/>
+					<Button Content="💾 Save As..." Command="{Binding SaveOutputCommand}"
+							Classes="secondary-btn" IsEnabled="{Binding HasOutput}"/>
+					<Button Content="🔄 Clear" Command="{Binding ClearOutputCommand}"
+							Classes="secondary-btn" IsEnabled="{Binding HasOutput}"/>
+
+					<TextBlock Text="{Binding TokenInfo}" VerticalAlignment="Center"
+							   Classes="token-info" Margin="20,0,0,0"/>
+				</StackPanel>
+
+				<!-- Output Text Area -->
+				<Border Grid.Row="1" Classes="output-border">
+					<ScrollViewer VerticalScrollBarVisibility="Auto">
+						<TextBox Text="{Binding Output}" IsReadOnly="True" AcceptsReturn="True"
+								 AcceptsTab="True" TextWrapping="Wrap"
+								 Classes="output-text" FontFamily="Consolas, Menlo, Monaco, Courier New"/>
+					</ScrollViewer>
+				</Border>
+			</Grid>
+
+			<!-- Progress Bar -->
+			<Border Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"
+					IsVisible="{Binding IsProcessing}" Margin="0,15,0,0">
+				<StackPanel Spacing="10">
+					<ProgressBar IsIndeterminate="True" Height="4" Classes="progress-bar"/>
+					<TextBlock Text="Processing..." HorizontalAlignment="Center" Classes="processing-text"/>
+				</StackPanel>
+			</Border>
+
+		</Grid>
+	</DockPanel>
 </Window>
