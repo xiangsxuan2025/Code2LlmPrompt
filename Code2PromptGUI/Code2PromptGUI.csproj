@@ -11,6 +11,13 @@
 	<ItemGroup>
 		<AvaloniaResource Include="Assets\**" />
 	</ItemGroup>
+	
+	<!-- 包含 code2prompt.exe 工具 -->
+	<ItemGroup>
+		<Content Include="Tools\code2prompt.exe">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Avalonia" Version="11.3.8" />
