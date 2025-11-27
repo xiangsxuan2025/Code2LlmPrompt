@@ -11,7 +11,7 @@
 
 Code2Prompt GUI is a specialized desktop application designed to seamlessly convert your codebase into well-structured prompts optimized for Large Language Models. Bridge the gap between complex codebases and AI understanding with a single click.
 
-![Preview](Code2LlmPrompt/Assets/Code2LlmPrompt_Preview_2025-11-27_01-03-41.png)
+![Preview](Code2LlmPrompt/Assets/Code2LlmPrompt_Preview.png)
 
 </div align="center">
 
@@ -67,7 +67,7 @@ MIT License - see [LICENSE.txt](LICENSE.txt) for details.
 
 Code2Prompt GUI 是一款专业桌面应用程序，专门设计用于将您的代码库无缝转换为针对大语言模型优化的结构化提示词。一键连接复杂代码库与AI理解之间的桥梁。
 
-![Preview](Code2LlmPrompt/Assets/Code2LlmPrompt_Preview_2025-11-27_01-03-41.png)
+![Preview](Code2LlmPrompt/Assets/Code2LlmPrompt_Preview.png)
 
 </div align="center">
 
