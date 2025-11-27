@@ -170,11 +170,14 @@
 		<Setter Property="Foreground" Value="#0a0a16"/>
 		<Setter Property="BorderThickness" Value="0"/>
 		<Setter Property="CornerRadius" Value="6"/>
-		<Setter Property="Padding" Value="16,8"/>
+		<Setter Property="Padding" Value="20,10"/>  <!-- 增加水平内边距 -->
 		<Setter Property="FontWeight" Value="Bold"/>
 		<Setter Property="Cursor" Value="Hand"/>
-		<Setter Property="FontSize" Value="12"/>
+		<Setter Property="FontSize" Value="13"/>    <!-- 稍微增大字体 -->
 		<Setter Property="HorizontalContentAlignment" Value="Center"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+		<Setter Property="MinWidth" Value="140"/>   <!-- 设置最小宽度 -->
+		<Setter Property="MinHeight" Value="36"/>   <!-- 设置最小高度 -->
 	</Style>
 
 	<Style Selector="Button.primary-btn:pointerover">
