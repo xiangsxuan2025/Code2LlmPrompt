@@ -1,225 +1,47 @@
 <Styles xmlns="https://github.com/avaloniaui"
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
+	<!-- ===== 基础样式 ===== -->
 	<Style Selector="Window">
-		<Setter Property="Background" Value="#0f0f23"/>
-		<Setter Property="Foreground" Value="#00ff41"/>
-		<Setter Property="FontFamily" Value="Consolas, Menlo, Monaco, Courier New"/>
+		<Setter Property="Background" Value="#0a0a16"/>
+		<Setter Property="Foreground" Value="#00ff9d"/>
+		<Setter Property="FontFamily" Value="Consolas, 'Cascadia Code', 'JetBrains Mono', Menlo, Monaco, 'Courier New', monospace"/>
 	</Style>
 
+	<!-- ===== 标题栏样式 ===== -->
 	<Style Selector="Border.header">
-		<Setter Property="Background" Value="#1a1a2e"/>
+		<Setter Property="Background" Value="#15152b"/>
 		<Setter Property="BorderThickness" Value="0,0,0,2"/>
-		<Setter Property="BorderBrush" Value="#00ff41"/>
-		<Setter Property="Padding" Value="20,15"/>
-		<Setter Property="Height" Value="60"/>
+		<Setter Property="BorderBrush" Value="#00ff9d"/>
+		<Setter Property="Padding" Value="20,12"/>
+		<Setter Property="Height" Value="50"/>
 	</Style>
 
 	<Style Selector="TextBlock.title">
-		<Setter Property="Foreground" Value="#00ff41"/>
-		<Setter Property="FontSize" Value="22"/>
+		<Setter Property="Foreground" Value="#00ff9d"/>
+		<Setter Property="FontSize" Value="20"/>
 		<Setter Property="FontWeight" Value="Bold"/>
 		<Setter Property="TextAlignment" Value="Center"/>
+		<Setter Property="FontFamily" Value="'Segoe UI', system-ui, sans-serif"/>
 	</Style>
 
+	<!-- ===== 状态文本样式 ===== -->
 	<Style Selector="TextBlock.status">
 		<Setter Property="Foreground" Value="#ff6b35"/>
-		<Setter Property="FontSize" Value="12"/>
-	</Style>
-
-	<Style Selector="Border.section">
-		<Setter Property="Background" Value="#1a1a2e"/>
-		<Setter Property="BorderThickness" Value="1"/>
-		<Setter Property="BorderBrush" Value="#333344"/>
-		<Setter Property="CornerRadius" Value="6"/>
-		<Setter Property="Padding" Value="10"/>
-	</Style>
-
-	<Style Selector="TextBlock.section-title">
-		<Setter Property="Foreground" Value="#00ff41"/>
-		<Setter Property="FontSize" Value="12"/>
-		<Setter Property="FontWeight" Value="Bold"/>
-		<Setter Property="Margin" Value="0,0,0,3"/>
-	</Style>
-
-	<Style Selector="TextBlock.label">
-		<Setter Property="Foreground" Value="#cccccc"/>
-		<Setter Property="FontSize" Value="12"/>
+		<Setter Property="FontSize" Value="11"/>
 		<Setter Property="FontWeight" Value="SemiBold"/>
 	</Style>
 
-	<!-- 优化文本框样式 -->
-	<Style Selector="TextBox.input">
-		<Setter Property="Background" Value="#0a0a1a"/>
-		<Setter Property="Foreground" Value="#ffffff"/>
-		<Setter Property="BorderThickness" Value="1"/>
-		<Setter Property="BorderBrush" Value="#444455"/>
-		<Setter Property="CornerRadius" Value="3"/>
-		<Setter Property="Padding" Value="6,4"/>
-		<Setter Property="CaretBrush" Value="#00ff41"/>
+	<Style Selector="TextBlock.tool-status">
+		<Setter Property="Foreground" Value="#00ccff"/>
 		<Setter Property="FontSize" Value="11"/>
-	</Style>
-
-	<Style Selector="TextBox.input:pointerover">
-		<Setter Property="BorderBrush" Value="#666677"/>
-		<Setter Property="Background" Value="#0d0d22"/>
-	</Style>
-
-	<Style Selector="TextBox.input:focus">
-		<Setter Property="BorderBrush" Value="#00ff41"/>
-		<Setter Property="Background" Value="#0d0d22"/>
-	</Style>
-
-	<Style Selector="TextBox.input:focus:pointerover">
-		<Setter Property="BorderBrush" Value="#00ff41"/>
-		<Setter Property="Background" Value="#0d0d22"/>
-	</Style>
-
-	<!-- 优化组合框样式 -->
-	<Style Selector="ComboBox.combo">
-		<Setter Property="Background" Value="#0a0a1a"/>
-		<Setter Property="Foreground" Value="#ffffff"/>
-		<Setter Property="BorderThickness" Value="1"/>
-		<Setter Property="BorderBrush" Value="#444455"/>
-		<Setter Property="CornerRadius" Value="3"/>
-		<Setter Property="Padding" Value="6,4"/>
-		<Setter Property="FontSize" Value="11"/>
-	</Style>
-
-	<Style Selector="ComboBox.combo:pointerover">
-		<Setter Property="BorderBrush" Value="#666677"/>
-		<Setter Property="Background" Value="#0d0d22"/>
-	</Style>
-
-	<Style Selector="ComboBox.combo:focus">
-		<Setter Property="BorderBrush" Value="#00ff41"/>
-		<Setter Property="Background" Value="#0d0d22"/>
-	</Style>
-
-	<Style Selector="ComboBox.combo /template/ ToggleButton">
-		<Setter Property="Background" Value="#333344"/>
-		<Setter Property="Foreground" Value="#00ff41"/>
-		<Setter Property="BorderThickness" Value="0"/>
-		<Setter Property="BorderBrush" Value="Transparent"/>
-	</Style>
-
-	<Style Selector="ComboBox.combo:pointerover /template/ ToggleButton">
-		<Setter Property="Background" Value="#444455"/>
-	</Style>
-
-	<Style Selector="ComboBox.combo:focus /template/ ToggleButton">
-		<Setter Property="Background" Value="#444455"/>
-	</Style>
-
-	<!-- 优化复选框样式 -->
-	<Style Selector="CheckBox.checkbox">
-		<Setter Property="Foreground" Value="#cccccc"/>
-		<Setter Property="FontSize" Value="12"/>
-		<Setter Property="Background" Value="Transparent"/>
-	</Style>
-
-	<Style Selector="CheckBox.checkbox:pointerover">
-		<Setter Property="Foreground" Value="#ffffff"/>
-	</Style>
-
-	<Style Selector="CheckBox.checkbox:pointerover /template/ ContentPresenter">
-		<Setter Property="TextBlock.Foreground" Value="#ffffff"/>
-	</Style>
-
-	<!-- 优化按钮样式 -->
-	<Style Selector="Button.primary-btn">
-		<Setter Property="Background" Value="#00ff41"/>
-		<Setter Property="Foreground" Value="#0f0f23"/>
-		<Setter Property="BorderThickness" Value="0"/>
-		<Setter Property="CornerRadius" Value="4"/>
-		<Setter Property="Padding" Value="15,6"/>
-		<Setter Property="FontWeight" Value="Bold"/>
-		<Setter Property="Cursor" Value="Hand"/>
-		<Setter Property="FontSize" Value="11"/>
-	</Style>
-
-	<Style Selector="Button.primary-btn:pointerover">
-		<Setter Property="Background" Value="#00cc33"/>
-		<Setter Property="Foreground" Value="#0f0f23"/>
-	</Style>
-
-	<Style Selector="Button.primary-btn:pressed">
-		<Setter Property="Background" Value="#009927"/>
-		<Setter Property="Foreground" Value="#0f0f23"/>
-	</Style>
-
-	<Style Selector="Button.secondary-btn">
-		<Setter Property="Background" Value="#333344"/>
-		<Setter Property="Foreground" Value="#ffffff"/>
-		<Setter Property="BorderThickness" Value="1"/>
-		<Setter Property="BorderBrush" Value="#555566"/>
-		<Setter Property="CornerRadius" Value="4"/>
-		<Setter Property="Padding" Value="10,4"/>
-		<Setter Property="Cursor" Value="Hand"/>
-		<Setter Property="FontSize" Value="10"/>
-	</Style>
-
-	<Style Selector="Button.secondary-btn:pointerover">
-		<Setter Property="Background" Value="#444455"/>
-		<Setter Property="Foreground" Value="#ffffff"/>
-		<Setter Property="BorderBrush" Value="#00ff41"/>
-	</Style>
-
-	<Style Selector="Button.secondary-btn:pressed">
-		<Setter Property="Background" Value="#555566"/>
-		<Setter Property="Foreground" Value="#ffffff"/>
-		<Setter Property="BorderBrush" Value="#00ff41"/>
-	</Style>
-
-	<Style Selector="Button.icon-btn">
-		<Setter Property="Background" Value="#333344"/>
-		<Setter Property="Foreground" Value="#00ff41"/>
-		<Setter Property="BorderThickness" Value="1"/>
-		<Setter Property="BorderBrush" Value="#555566"/>
-		<Setter Property="CornerRadius" Value="4"/>
-		<Setter Property="Padding" Value="8"/>
-		<Setter Property="Width" Value="35"/>
-		<Setter Property="Cursor" Value="Hand"/>
-	</Style>
-
-	<Style Selector="Button.icon-btn:pointerover">
-		<Setter Property="Background" Value="#444455"/>
-		<Setter Property="Foreground" Value="#00ff41"/>
-		<Setter Property="BorderBrush" Value="#666677"/>
-	</Style>
-
-	<Style Selector="Button.icon-btn:pressed">
-		<Setter Property="Background" Value="#555566"/>
-		<Setter Property="Foreground" Value="#00ff41"/>
-		<Setter Property="BorderBrush" Value="#666677"/>
-	</Style>
-
-	<Style Selector="Border.output-border">
-		<Setter Property="Background" Value="#0a0a1a"/>
-		<Setter Property="BorderThickness" Value="1"/>
-		<Setter Property="BorderBrush" Value="#444455"/>
-		<Setter Property="CornerRadius" Value="8"/>
-		<Setter Property="Padding" Value="1"/>
-	</Style>
-
-	<Style Selector="TextBox.output-text">
-		<Setter Property="Background" Value="#0a0a1a"/>
-		<Setter Property="Foreground" Value="#00ff41"/>
-		<Setter Property="BorderThickness" Value="0"/>
-		<Setter Property="Padding" Value="15"/>
-		<Setter Property="FontSize" Value="12"/>
-	</Style>
-
-	<Style Selector="ProgressBar.progress-bar">
-		<Setter Property="Background" Value="#333344"/>
-		<Setter Property="Foreground" Value="#00ff41"/>
-		<Setter Property="BorderThickness" Value="0"/>
-		<Setter Property="Height" Value="4"/>
+		<Setter Property="FontWeight" Value="SemiBold"/>
 	</Style>
 
 	<Style Selector="TextBlock.processing-text">
 		<Setter Property="Foreground" Value="#ff6b35"/>
-		<Setter Property="FontSize" Value="11"/>
+		<Setter Property="FontSize" Value="12"/>
+		<Setter Property="FontWeight" Value="SemiBold"/>
 	</Style>
 
 	<Style Selector="TextBlock.token-info">
@@ -228,54 +50,274 @@
 		<Setter Property="FontWeight" Value="Bold"/>
 	</Style>
 
-	<Style Selector="TextBlock.tool-status">
-		<Setter Property="Foreground" Value="#00ccff"/>
+	<!-- ===== 区域容器样式 ===== -->
+	<Style Selector="Border.section">
+		<Setter Property="Background" Value="#15152b"/>
+		<Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="BorderBrush" Value="#2a2a4a"/>
+		<Setter Property="CornerRadius" Value="8"/>
+		<Setter Property="Padding" Value="12"/>
+	</Style>
+
+	<Style Selector="TextBlock.section-title">
+		<Setter Property="Foreground" Value="#00ff9d"/>
+		<Setter Property="FontSize" Value="13"/>
+		<Setter Property="FontWeight" Value="Bold"/>
+		<Setter Property="Margin" Value="0,0,0,6"/>
+	</Style>
+
+	<Style Selector="TextBlock.label">
+		<Setter Property="Foreground" Value="#b0b0d0"/>
+		<Setter Property="FontSize" Value="11"/>
+		<Setter Property="FontWeight" Value="SemiBold"/>
+		<Setter Property="Margin" Value="0,0,0,2"/>
+	</Style>
+
+	<!-- ===== 输入控件样式 ===== -->
+	<Style Selector="TextBox.input">
+		<Setter Property="Background" Value="#0a0a1a"/>
+		<Setter Property="Foreground" Value="#e0e0e0"/>
+		<Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="BorderBrush" Value="#3a3a5a"/>
+		<Setter Property="CornerRadius" Value="4"/>
+		<Setter Property="Padding" Value="8,6"/>
+		<Setter Property="CaretBrush" Value="#00ff9d"/>
+		<Setter Property="FontSize" Value="11"/>
+		<Setter Property="SelectionBrush" Value="#00ff9d40"/>
+	</Style>
+
+	<Style Selector="TextBox.input:pointerover">
+		<Setter Property="BorderBrush" Value="#4a4a6a"/>
+		<Setter Property="Background" Value="#0d0d22"/>
+		<Setter Property="Foreground" Value="#00ff9d"/>
+	</Style>
+
+	<Style Selector="TextBox.input:focus">
+		<Setter Property="BorderBrush" Value="#00ff9d"/>
+		<Setter Property="Background" Value="#0a0a1a"/>
+		<Setter Property="Foreground" Value="#00ff9d"/>
+	</Style>
+
+	<Style Selector="TextBox.input:focus:pointerover">
+		<Setter Property="BorderBrush" Value="#00ff9d"/>
+		<Setter Property="Background" Value="#0d0d22"/>
+		<Setter Property="Foreground" Value="#00ff9d"/>
+	</Style>
+
+	<!-- 水印文本样式 -->
+	<Style Selector="TextBox.input:empty /template/ ContentPresenter">
+		<Setter Property="TextBlock.Foreground" Value="#666699"/>
+	</Style>
+
+	<!-- ===== 组合框样式 ===== -->
+	<Style Selector="ComboBox.combo">
+		<Setter Property="Background" Value="#0a0a1a"/>
+		<Setter Property="Foreground" Value="#e0e0e0"/>
+		<Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="BorderBrush" Value="#3a3a5a"/>
+		<Setter Property="CornerRadius" Value="4"/>
+		<Setter Property="Padding" Value="8,6"/>
 		<Setter Property="FontSize" Value="11"/>
 	</Style>
 
+	<Style Selector="ComboBox.combo:pointerover">
+		<Setter Property="BorderBrush" Value="#4a4a6a"/>
+		<Setter Property="Background" Value="#0d0d22"/>
+		<Setter Property="Foreground" Value="#00ff9d"/>
+	</Style>
+
+	<Style Selector="ComboBox.combo:focus">
+		<Setter Property="BorderBrush" Value="#00ff9d"/>
+		<Setter Property="Background" Value="#0a0a1a"/>
+		<Setter Property="Foreground" Value="#00ff9d"/>
+	</Style>
+
+	<Style Selector="ComboBox.combo /template/ ToggleButton">
+		<Setter Property="Background" Value="#2a2a4a"/>
+		<Setter Property="Foreground" Value="#00ff9d"/>
+		<Setter Property="BorderThickness" Value="0"/>
+		<Setter Property="BorderBrush" Value="Transparent"/>
+		<Setter Property="Width" Value="28"/>
+	</Style>
+
+	<Style Selector="ComboBox.combo:pointerover /template/ ToggleButton">
+		<Setter Property="Background" Value="#3a3a5a"/>
+	</Style>
+
+	<Style Selector="ComboBox.combo:focus /template/ ToggleButton">
+		<Setter Property="Background" Value="#3a3a5a"/>
+	</Style>
+
+	<!-- ===== 复选框样式 ===== -->
+	<Style Selector="CheckBox.checkbox">
+		<Setter Property="Foreground" Value="#b0b0d0"/>
+		<Setter Property="FontSize" Value="11"/>
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="Margin" Value="0,2"/>
+	</Style>
+
+	<Style Selector="CheckBox.checkbox:pointerover">
+		<Setter Property="Foreground" Value="#00ff9d"/>
+	</Style>
+
+	<Style Selector="CheckBox.checkbox:pointerover /template/ ContentPresenter">
+		<Setter Property="TextBlock.Foreground" Value="#00ff9d"/>
+	</Style>
+
+	<!-- ===== 按钮样式 ===== -->
+	<Style Selector="Button.primary-btn">
+		<Setter Property="Background" Value="#00ff9d"/>
+		<Setter Property="Foreground" Value="#0a0a16"/>
+		<Setter Property="BorderThickness" Value="0"/>
+		<Setter Property="CornerRadius" Value="6"/>
+		<Setter Property="Padding" Value="16,8"/>
+		<Setter Property="FontWeight" Value="Bold"/>
+		<Setter Property="Cursor" Value="Hand"/>
+		<Setter Property="FontSize" Value="12"/>
+		<Setter Property="HorizontalContentAlignment" Value="Center"/>
+	</Style>
+
+	<Style Selector="Button.primary-btn:pointerover">
+		<Setter Property="Background" Value="#00e68a"/>
+		<Setter Property="Foreground" Value="#0a0a16"/>
+	</Style>
+
+	<Style Selector="Button.primary-btn:pressed">
+		<Setter Property="Background" Value="#00cc77"/>
+		<Setter Property="Foreground" Value="#0a0a16"/>
+	</Style>
+
+	<Style Selector="Button.secondary-btn">
+		<Setter Property="Background" Value="#2a2a4a"/>
+		<Setter Property="Foreground" Value="#00ff9d"/>
+		<Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="BorderBrush" Value="#3a3a5a"/>
+		<Setter Property="CornerRadius" Value="6"/>
+		<Setter Property="Padding" Value="12,6"/>
+		<Setter Property="Cursor" Value="Hand"/>
+		<Setter Property="FontSize" Value="11"/>
+		<Setter Property="FontWeight" Value="SemiBold"/>
+	</Style>
+
+	<Style Selector="Button.secondary-btn:pointerover">
+		<Setter Property="Background" Value="#3a3a5a"/>
+		<Setter Property="Foreground" Value="#00ff9d"/>
+		<Setter Property="BorderBrush" Value="#00ff9d"/>
+	</Style>
+
+	<Style Selector="Button.secondary-btn:pressed">
+		<Setter Property="Background" Value="#4a4a6a"/>
+		<Setter Property="Foreground" Value="#00ff9d"/>
+		<Setter Property="BorderBrush" Value="#00ff9d"/>
+	</Style>
+
+	<Style Selector="Button.icon-btn">
+		<Setter Property="Background" Value="#2a2a4a"/>
+		<Setter Property="Foreground" Value="#00ff9d"/>
+		<Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="BorderBrush" Value="#3a3a5a"/>
+		<Setter Property="CornerRadius" Value="4"/>
+		<Setter Property="Padding" Value="6"/>
+		<Setter Property="Width" Value="32"/>
+		<Setter Property="Height" Value="32"/>
+		<Setter Property="Cursor" Value="Hand"/>
+		<Setter Property="FontSize" Value="12"/>
+	</Style>
+
+	<Style Selector="Button.icon-btn:pointerover">
+		<Setter Property="Background" Value="#3a3a5a"/>
+		<Setter Property="Foreground" Value="#00ff9d"/>
+		<Setter Property="BorderBrush" Value="#4a4a6a"/>
+	</Style>
+
+	<Style Selector="Button.icon-btn:pressed">
+		<Setter Property="Background" Value="#4a4a6a"/>
+		<Setter Property="Foreground" Value="#00ff9d"/>
+		<Setter Property="BorderBrush" Value="#4a4a6a"/>
+	</Style>
+
+	<!-- ===== 输出区域样式 ===== -->
+	<Style Selector="Border.output-border">
+		<Setter Property="Background" Value="#0a0a1a"/>
+		<Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="BorderBrush" Value="#2a2a4a"/>
+		<Setter Property="CornerRadius" Value="8"/>
+		<Setter Property="Padding" Value="1"/>
+	</Style>
+
+	<Style Selector="TextBox.output-text">
+		<Setter Property="Background" Value="#0a0a1a"/>
+		<Setter Property="Foreground" Value="#00ff9d"/>
+		<Setter Property="BorderThickness" Value="0"/>
+		<Setter Property="Padding" Value="12"/>
+		<Setter Property="FontSize" Value="11"/>
+		<Setter Property="AcceptsReturn" Value="True"/>
+		<Setter Property="AcceptsTab" Value="True"/>
+		<Setter Property="TextWrapping" Value="Wrap"/>
+		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+		<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+	</Style>
+
+	<!-- ===== 进度条样式 ===== -->
+	<Style Selector="ProgressBar.progress-bar">
+		<Setter Property="Background" Value="#2a2a4a"/>
+		<Setter Property="Foreground" Value="#00ff9d"/>
+		<Setter Property="BorderThickness" Value="0"/>
+		<Setter Property="Height" Value="6"/>
+		<Setter Property="CornerRadius" Value="3"/>
+	</Style>
+
+	<!-- ===== 覆盖层样式 ===== -->
 	<Style Selector="Border.progress-overlay">
-		<Setter Property="Background" Value="#CC1a1a2e"/>
+		<Setter Property="Background" Value="#CC15152b"/>
 	</Style>
 
-	<!-- 自定义标题栏按钮样式 -->
+	<!-- ===== 自定义标题栏按钮样式 ===== -->
 	<Style Selector="Button.titlebar-btn">
 		<Setter Property="Background" Value="Transparent"/>
-		<Setter Property="Foreground" Value="#cccccc"/>
+		<Setter Property="Foreground" Value="#b0b0d0"/>
 		<Setter Property="BorderThickness" Value="0"/>
 		<Setter Property="Cursor" Value="Hand"/>
+		<Setter Property="FontSize" Value="12"/>
+		<Setter Property="Width" Value="40"/>
+		<Setter Property="Height" Value="30"/>
 	</Style>
 
 	<Style Selector="Button.titlebar-btn:pointerover">
-		<Setter Property="Background" Value="#333344"/>
+		<Setter Property="Background" Value="#2a2a4a"/>
+		<Setter Property="Foreground" Value="#00ff9d"/>
 	</Style>
 
 	<Style Selector="Button.titlebar-btn.close-btn:pointerover">
 		<Setter Property="Background" Value="#e81123"/>
-		<Setter Property="Foreground" Value="#ffffff"/>
+		<Setter Property="Foreground" Value="#00ff9d"/>
 	</Style>
 
-	<!-- 自定义标题栏按钮样式 -->
-	<Style Selector="Button.titlebar-btn">
-		<Setter Property="Background" Value="Transparent"/>
-		<Setter Property="Foreground" Value="#cccccc"/>
-		<Setter Property="BorderThickness" Value="0"/>
-		<Setter Property="Cursor" Value="Hand"/>
-	</Style>
-
-	<Style Selector="Button.titlebar-btn:pointerover">
-		<Setter Property="Background" Value="#333344"/>
-	</Style>
-
-	<Style Selector="Button.titlebar-btn.close-btn:pointerover">
-		<Setter Property="Background" Value="#e81123"/>
-		<Setter Property="Foreground" Value="#ffffff"/>
-	</Style>
-	<!-- 确保布局稳定的样式 -->
+	<!-- ===== 布局辅助样式 ===== -->
 	<Style Selector="ScrollViewer">
 		<Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
+		<Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
 	</Style>
 
 	<Style Selector="StackPanel">
 		<Setter Property="HorizontalAlignment" Value="Stretch"/>
 	</Style>
+
+	<!-- ===== 工具提示样式 ===== -->
+	<Style Selector="ToolTip">
+		<Setter Property="Background" Value="#15152b"/>
+		<Setter Property="Foreground" Value="#00ff9d"/>
+		<Setter Property="BorderBrush" Value="#2a2a4a"/>
+		<Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="Padding" Value="8,4"/>
+		<Setter Property="FontSize" Value="10"/>
+	</Style>
+
+	<!-- ===== 分隔线样式 ===== -->
+	<Style Selector="Separator">
+		<Setter Property="Background" Value="#2a2a4a"/>
+		<Setter Property="Height" Value="1"/>
+		<Setter Property="Margin" Value="0,8"/>
+	</Style>
+
 </Styles>
