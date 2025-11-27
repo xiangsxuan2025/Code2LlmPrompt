@@ -2,9 +2,9 @@
 			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 			 xmlns:vm="clr-namespace:Code2LlmPrompt.ViewModels"
 			 x:Class="Code2LlmPrompt.Views.Controls.OutputPanelControl"
-			 x:DataType="vm:MainViewModel">
-	<Grid RowDefinitions="Auto,150">
-		<!-- Output Controls -->
+			 x:DataType="vm:MainViewModel" MinWidth="200">
+	<Grid RowDefinitions="Auto,60,Auto,*">
+		<!-- Generate Button -->
 		<StackPanel
 		Grid.Row="0"
 		Orientation="Horizontal"
@@ -18,33 +18,9 @@
 			Width="100"
 			Height="28"
 			/>
-			<Button
-			Content="📋 Copy"
-			Command="{Binding CopyOutputCommand}"
-			Classes="secondary-btn"
-			IsEnabled="{Binding HasOutput}"
-			Width="70"
-			Height="28"
-			/>
-			<Button
-			Content="💾 Save"
-			Command="{Binding SaveOutputCommand}"
-			Classes="secondary-btn"
-			IsEnabled="{Binding HasOutput}"
-			Width="70"
-			Height="28"
-			/>
-			<Button
-			Content="🔄 Clear"
-			Command="{Binding ClearOutputCommand}"
-			Classes="secondary-btn"
-			IsEnabled="{Binding HasOutput}"
-			Width="70"
-			Height="28"
-			/>
 		</StackPanel>
 
-		<!-- Output Text Area -->
+		<!-- Output Text Area (Fixed 2 lines) -->
 		<Border Grid.Row="1" Classes="output-border">
 			<ScrollViewer VerticalScrollBarVisibility="Auto">
 				<TextBox
@@ -52,7 +28,64 @@
 				IsReadOnly="True"
 				AcceptsReturn="True"
 				AcceptsTab="True"
-				TextWrapping="WrapWithOverflow"
+				TextWrapping="Wrap"
+				Classes="output-text"
+				FontFamily="Consolas, Menlo, Monaco, Courier New"
+				FontSize="10"
+				Height="60"
+				MaxHeight="60"
+				/>
+			</ScrollViewer>
+		</Border>
+
+		<!-- Result Header with Action Buttons -->
+		<Border Grid.Row="2" Background="#1a1a2e" Margin="0,5,0,0" BorderThickness="0,0,0,1" BorderBrush="#333344">
+			<Grid Margin="0,3">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
+
+				<TextBlock
+				Text="Result"
+				Foreground="#00ff41"
+				FontSize="12"
+				FontWeight="Bold"
+				VerticalAlignment="Center"
+				/>
+
+				<StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="3">
+					<Button
+					Content="📋"
+					Command="{Binding CopyResultCommand}"
+					Classes="icon-btn"
+					Width="28"
+					Height="24"
+					FontSize="10"
+					ToolTip.Tip="Copy result to clipboard"
+					/>
+					<Button
+					Content="💾"
+					Command="{Binding SaveResultCommand}"
+					Classes="icon-btn"
+					Width="28"
+					Height="24"
+					FontSize="10"
+					ToolTip.Tip="Save result to file"
+					/>
+				</StackPanel>
+			</Grid>
+		</Border>
+
+		<!-- Result Text Area -->
+		<Border Grid.Row="3" Classes="output-border" Margin="0,5,0,0">
+			<ScrollViewer VerticalScrollBarVisibility="Auto">
+				<TextBox
+				Text="{Binding ResultContent}"
+				IsReadOnly="True"
+				AcceptsReturn="True"
+				AcceptsTab="True"
+				TextWrapping="Wrap"
 				Classes="output-text"
 				FontFamily="Consolas, Menlo, Monaco, Courier New"
 				FontSize="10"

@@ -25,10 +25,10 @@ namespace Code2LlmPrompt.ViewModels
         private string _path = ".";
 
         [ObservableProperty]
-        private string _outputFileName = "code2prompt.txt";//指定文件名, 不加貌似会报错，code2prompt可能有bug
+        private string _outputFileName = "code2prompt.txt";
 
         [ObservableProperty]
-        private bool _clipboard = false;//默认会粘贴到剪贴板，特备指定了，反而会报错，code2prompt可能有bug
+        private bool _clipboard = false;
 
         [ObservableProperty]
         private string _includePatterns = "";
@@ -88,13 +88,10 @@ namespace Code2LlmPrompt.ViewModels
         private string _output = "";
 
         [ObservableProperty]
+        private string _resultContent = "";
+
+        [ObservableProperty]
         private bool _isProcessing;
-
-        [ObservableProperty]
-        private bool _hasOutput;
-
-        [ObservableProperty]
-        private string _tokenInfo = "";
 
         [ObservableProperty]
         private string _toolStatus = "🔧 Tool: Ready";
@@ -150,8 +147,8 @@ namespace Code2LlmPrompt.ViewModels
                 else
                 {
                     // 基础模式 - 较小的窗口
-                    _mainWindow.Width = 650;
-                    _mainWindow.Height = 500;
+                    _mainWindow.Width = 550;
+                    _mainWindow.Height = 420;
                 }
             }
         }
@@ -162,8 +159,7 @@ namespace Code2LlmPrompt.ViewModels
             if (IsProcessing) return;
 
             Output = "";
-            HasOutput = false;
-            TokenInfo = "";
+            ResultContent = "";
             IsProcessing = true;
             Status = "Generating prompt...";
 
@@ -211,16 +207,16 @@ namespace Code2LlmPrompt.ViewModels
         }
 
         [RelayCommand]
-        private async Task CopyOutput()
+        private async Task CopyResult()
         {
-            if (string.IsNullOrEmpty(Output)) return;
+            if (string.IsNullOrEmpty(ResultContent)) return;
 
             try
             {
                 if (_mainWindow?.Clipboard is { } clipboard)
                 {
-                    await clipboard.SetTextAsync(Output);
-                    Status = "Copied to clipboard";
+                    await clipboard.SetTextAsync(ResultContent);
+                    Status = "Result copied to clipboard";
                 }
                 else
                 {
@@ -234,32 +230,23 @@ namespace Code2LlmPrompt.ViewModels
         }
 
         [RelayCommand]
-        private async Task SaveOutput()
+        private async Task SaveResult()
         {
-            if (string.IsNullOrEmpty(Output)) return;
+            if (string.IsNullOrEmpty(ResultContent)) return;
 
-            var file = await SaveFileAsync("Save prompt output", new[] { "*.md", "*.txt", "*" });
+            var file = await SaveFileAsync("Save result", new[] { "*.md", "*.txt", "*" });
             if (file != null)
             {
                 try
                 {
-                    await File.WriteAllTextAsync(file, Output);
-                    Status = $"Saved to {System.IO.Path.GetFileName(file)}";
+                    await File.WriteAllTextAsync(file, ResultContent);
+                    Status = $"Result saved to {System.IO.Path.GetFileName(file)}";
                 }
                 catch (Exception ex)
                 {
                     Status = $"Save failed: {ex.Message}";
                 }
             }
-        }
-
-        [RelayCommand]
-        private void ClearOutput()
-        {
-            Output = "";
-            HasOutput = false;
-            TokenInfo = "";
-            Status = "Ready";
         }
 
         private string BuildArguments()
@@ -361,38 +348,44 @@ namespace Code2LlmPrompt.ViewModels
         private void OnOutputReceived(string data)
         {
             Output += data + Environment.NewLine;
-            HasOutput = true;
 
-            // 提取token计数信息
-            if (data.Contains("Token count:") || data.Contains("token_count"))
+            // 如果输出文件存在，读取其内容到ResultContent
+            if (File.Exists(OutputFileName))
             {
-                TokenInfo = ExtractTokenInfo(data);
+                try
+                {
+                    ResultContent = File.ReadAllText(OutputFileName);
+                }
+                catch (Exception ex)
+                {
+                    Output += $"Error reading output file: {ex.Message}{Environment.NewLine}";
+                }
             }
         }
 
         private void OnErrorReceived(string data)
         {
             Output += $"ERROR: {data}{Environment.NewLine}";
-            HasOutput = true;
         }
 
         private void OnProcessExited(int exitCode)
         {
             IsProcessing = false;
             Status = exitCode == 0 ? "Completed" : "Failed";
-        }
 
-        private string ExtractTokenInfo(string data)
-        {
-            // 简单提取token信息
-            if (data.Contains("Token count:"))
+            // 最终尝试读取输出文件
+            if (exitCode == 0 && File.Exists(OutputFileName))
             {
-                var start = data.IndexOf("Token count:") + "Token count:".Length;
-                var end = data.IndexOf(",", start);
-                if (end == -1) end = data.Length;
-                return data.Substring(start, end - start).Trim();
+                try
+                {
+                    ResultContent = File.ReadAllText(OutputFileName);
+                    Status = "Completed - Result ready";
+                }
+                catch (Exception ex)
+                {
+                    Output += $"Error reading output file: {ex.Message}{Environment.NewLine}";
+                }
             }
-            return "";
         }
 
         private async Task<string?> BrowseFolderAsync()

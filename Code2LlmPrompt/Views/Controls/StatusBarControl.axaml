@@ -1,33 +1,33 @@
 <UserControl xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:vm="clr-namespace:Code2LlmPrompt.ViewModels"
-             x:Class="Code2LlmPrompt.Views.Controls.StatusBarControl"
-             x:DataType="vm:MainViewModel">
-    <Border DockPanel.Dock="Bottom" Background="#1a1a2e" BorderThickness="0,1,0,0" BorderBrush="#333344" Height="24">
-        <Grid Margin="10,2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            
-            <!-- Status -->
-            <TextBlock
-                Grid.Column="0"
-                Text="{Binding Status}"
-                VerticalAlignment="Center"
-                Classes="status"
-                FontSize="10"
-            />
-            
-            <!-- Tool Status -->
-            <TextBlock
-                Grid.Column="1"
-                Text="{Binding ToolStatus}"
-                VerticalAlignment="Center"
-                Classes="tool-status"
-                Margin="20,0,0,0"
-                FontSize="10"
-            />
-        </Grid>
-    </Border>
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:vm="clr-namespace:Code2LlmPrompt.ViewModels"
+			 x:Class="Code2LlmPrompt.Views.Controls.StatusBarControl"
+			 x:DataType="vm:MainViewModel">
+	<Border DockPanel.Dock="Bottom" Background="#1a1a2e" BorderThickness="0,1,0,0" BorderBrush="#333344" Height="24">
+		<Grid Margin="10,2">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="Auto" />
+			</Grid.ColumnDefinitions>
+
+			<!-- Status -->
+			<TextBlock
+			Grid.Column="0"
+			Text="{Binding Status}"
+			VerticalAlignment="Center"
+			Classes="status"
+			FontSize="10"
+			/>
+
+			<!-- Tool Status -->
+			<TextBlock
+			Grid.Column="1"
+			Text="{Binding ToolStatus}"
+			VerticalAlignment="Center"
+			Classes="tool-status"
+			Margin="20,0,0,0"
+			FontSize="10"
+			/>
+		</Grid>
+	</Border>
 </UserControl>
