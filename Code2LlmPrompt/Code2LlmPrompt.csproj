@@ -63,4 +63,20 @@
 	    <DependentUpon>TokenSettingsControl.axaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
+	<!--<PropertyGroup>
+		--><!-- 启用内存诊断 --><!--
+		<DebugType>full</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+
+		--><!-- 禁用优化以便更好分析 --><!--
+		<Optimize>false</Optimize>
+
+		--><!-- 启用GC详细信息 --><!--
+		<ServerGarbageCollection>true</ServerGarbageCollection>
+		<ConcurrentGarbageCollection>true</ConcurrentGarbageCollection>
+
+		--><!-- 内存诊断支持 --><!--
+		<EnableUnsafeUTF7Encoding>false</EnableUnsafeUTF7Encoding>
+		<EnableUnsafeBinaryFormatterSerialization>false</EnableUnsafeBinaryFormatterSerialization>
+	</PropertyGroup>-->
 </Project>
