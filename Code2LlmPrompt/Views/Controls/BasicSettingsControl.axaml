@@ -30,24 +30,6 @@
 
 			<StackPanel Spacing="6">
 				<TextBlock Text="Output File" Classes="label" />
-				<Grid ColumnDefinitions="*,Auto">
-					<TextBox
-					Text="{Binding OutputFileName}"
-					Watermark="- (stdout)"
-					Classes="input"
-					Height="32"
-					/>
-					<Button
-					Content="💾"
-					Grid.Column="1"
-					Margin="5,0,0,0"
-					Command="{Binding BrowseOutputCommand}"
-					Classes="icon-btn"
-					Width="35"
-					Height="32"
-					/>
-				</Grid>
-
 				<CheckBox Content="Copy to Clipboard" IsChecked="{Binding Clipboard}"
 						  Classes="checkbox"/>
 			</StackPanel>

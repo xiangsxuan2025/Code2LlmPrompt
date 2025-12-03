@@ -76,19 +76,6 @@ namespace Code2LlmPrompt.ViewModels
         }
 
         /// <summary>
-        /// 浏览输出文件命令
-        /// </summary>
-        [RelayCommand]
-        private async Task BrowseOutput()
-        {
-            var file = await SaveFileAsync("Prompt output", new[] { "*.md", "*.txt", "*" });
-            if (file != null)
-            {
-                OutputFileName = file;
-            }
-        }
-
-        /// <summary>
         /// 浏览模板命令
         /// </summary>
         [RelayCommand]
